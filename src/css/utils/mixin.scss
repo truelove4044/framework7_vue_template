@@ -1,0 +1,141 @@
+@mixin xy_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin x_center {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+@mixin y_center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin mediaMax($max) {
+  @media (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+@mixin mediaMin($min) {
+  @media (min-width: #{$min}px) {
+    @content;
+  }
+}
+
+@mixin mediaBetween($min, $max) {
+  $minValue: if(type-of($min)=='string', map-get($breakpoints, $min), $min);
+  $maxValue: if(type-of($max)=='string', map-get($breakpoints, $max), $max);
+
+  @media (min-width: #{$minValue}px) and (max-width: #{$maxValue}px) {
+    @content;
+  }
+}
+
+/*-------------------------------------------------------------------
+	FA Font Awesome
+-------------------------------------------------------------------*/
+@mixin fa-icon($content) {
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: $content;
+}
+
+/*-------------------------------------------------------------------
+	icomoon
+-------------------------------------------------------------------*/
+@mixin icomoon($content) {
+  font-family: "icomoon" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  content: $content;
+}
+
+/*-------------------------------------------------------------------
+	文字ellipsis
+-------------------------------------------------------------------*/
+// 單行文字ellipsis
+@mixin text-ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin text-lines-ellipsis($line-height, $max-lines) {
+  // 設定高度
+  height: $line-height * $max-lines;
+  max-height: $line-height * $max-lines;
+  line-height: $line-height;
+  // 設定ellipsis
+  -webkit-line-clamp: $max-lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-inline-box;
+}
+
+/*-------------------------------------------------------------------
+	尺寸調整
+-------------------------------------------------------------------*/
+// 限制寬和高，已等比方式呈現
+@mixin over-hidden($w, $h) {
+  @include size($w, 0);
+  padding-bottom: $h;
+  overflow: hidden;
+}
+
+// 圖片背景
+@mixin bg-img($img, $x: 50%, $y: 50%, $bgSize: cover) {
+  background-image: url($img);
+  background-position: $x $y;
+  background-repeat: no-repeat;
+  background-size: $bgSize;
+}
+
+// 限制圖片比例
+@mixin bg-rwd-img($img, $w, $h) {
+  @include over-hidden($w, $h);
+  @include bg-img($img);
+}
+
+// 尺寸
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin mediaMax($max) {
+  @media (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+@mixin mediaMin($min) {
+  @media (min-width: #{$min}px) {
+    @content;
+  }
+}
+
+@mixin mediaBetween($min, $max) {
+  $minValue: if(type-of($min)=='string', map-get($breakpoints, $min), $min);
+  $maxValue: if(type-of($max)=='string', map-get($breakpoints, $max), $max);
+
+  @media (min-width: #{$minValue}px) and (max-width: #{$maxValue}px) {
+    @content;
+  }
+}

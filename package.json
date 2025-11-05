@@ -1,0 +1,49 @@
+{
+  "name": "framework7",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Framework7",
+  "repository": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "cross-env NODE_ENV=development vite",
+    "build": "cross-env NODE_ENV=production vite build",
+    "postinstall": "cpy --flat ./node_modules/framework7-icons/fonts/*.* ./src/fonts/ && cpy --flat ./node_modules/material-icons/iconfont/*.* ./src/fonts/"
+  },
+  "browserslist": [
+    "IOS >= 15",
+    "Safari >= 15",
+    "last 5 Chrome versions",
+    "last 5 Firefox versions"
+  ],
+  "dependencies": {
+    "dayjs": "^1.11.19",
+    "dom7": "^4.0.6",
+    "framework7": "^8.3.4",
+    "framework7-icons": "^5.0.5",
+    "framework7-vue": "^8.3.4",
+    "lodash-es": "^4.17.21",
+    "material-icons": "^1.13.14",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.5.0",
+    "qrcode.vue": "^3.6.0",
+    "skeleton-elements": "^4.0.1",
+    "swiper": "^12.0.3",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/compiler-sfc": "^3.5.22",
+    "cpy-cli": "^6.0.0",
+    "cross-env": "^10.1.0",
+    "postcss-preset-env": "^10.4.0",
+    "postcss-pxtorem": "^6.1.0",
+    "sass": "^1.93.2",
+    "unocss": "^66.5.4",
+    "unplugin-auto-import": "^20.2.0",
+    "unplugin-vue-components": "^30.0.0",
+    "vite": "^7.1.12",
+    "vite-plugin-svg-icons": "^2.0.1"
+  }
+}

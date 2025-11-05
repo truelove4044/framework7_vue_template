@@ -1,0 +1,58 @@
+@use './utils/mixin' as *;
+@use './utils/grid' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-size: 16px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+}
+
+.backdrop,
+.dialog-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+  backdrop-filter: blur(10px);
+}
+
+ul[role="list"] {
+  list-style: none;
+  padding: 0;
+
+  li {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+/*============================================================================
+    客製樣式
+============================================================================*/
+
+.page_block {
+  padding: 16px;
+  margin: 0;
+}
+
+@include desktops {}
+
+@include mobile_pad {}
