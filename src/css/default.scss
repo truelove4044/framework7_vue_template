@@ -10,6 +10,8 @@
 
 body {
   font-size: 16px;
+  color: #a5b3ce;
+  line-height: 1.6;
 }
 
 [v-cloak] {
@@ -42,17 +44,117 @@ ul[role="list"] {
   }
 }
 
+.backdrop-in {
+  backdrop-filter: blur(20px);
+}
 
 
 /*============================================================================
     客製樣式
 ============================================================================*/
 
-.page_block {
-  padding: 16px;
-  margin: 0;
+:root {
+  --f7-navbar-height: 64px;
 }
 
-@include desktops {}
+.page:not(.popup-page) {
+  .navbar {
+    .navbar-bg {
+      background: none;
+      color: #fff;
+      backdrop-filter: none;
 
-@include mobile_pad {}
+      &:after {
+        display: none;
+      }
+    }
+
+    .title {
+      color: #fff;
+    }
+  }
+}
+
+.page {
+
+  background: var(--color-bg-main);
+
+  .page_block {
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 940px;
+
+    .info {
+      padding: 32px;
+      background: var(--color-bg-card);
+      border-radius: 5px;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+      position: relative;
+      margin-top: calc(80px + 1rem);
+      padding-top: calc(80px + 1rem);
+
+      .title {
+        font-size: 1.75rem;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 1.6rem;
+      }
+
+      .headshot {
+        max-width: 160px;
+        height: auto;
+        border-radius: 50%;
+        border: 8px #eee solid;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.popup {
+
+  .navbar {
+    height: var(--f7-navbar-height);
+    border-bottom: 1px #ffffff20 solid;
+
+    .right {
+      .icon {
+        color: var(--color-link);
+      }
+    }
+  }
+
+  .page-content {
+    .block {
+      padding-top: calc(var(--f7-navbar-height) + 16px);
+      margin: 0;
+    }
+
+    @include mediaMax(630) {
+      padding-top: 0;
+    }
+  }
+}
+
+.portfolio_footer {
+  margin: 48px auto 24px;
+  text-align: center;
+  font-size: 15px;
+
+  .divider {
+    margin: 0 3px;
+  }
+
+  a {
+    color: var(--color-link);
+  }
+}

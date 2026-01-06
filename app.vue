@@ -15,14 +15,11 @@
   const f7params = {
     name: 'Framework7 App',
     theme: 'ios',
+    darkMode: true,
     routes
   }
 
-  onMounted(() => {
-    f7ready(() => {
-      console.log('Framework7 App 已初始化')
-    })
-  })
+  onMounted(() => {})
 </script>
 
 <style lang="scss" scoped>
