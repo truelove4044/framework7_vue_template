@@ -3,9 +3,12 @@
     <Layout>
       <template #mainContent>
         <f7-block class="page_block">
-          <div class="info">
-            <div class="headshot"><img src="@/assets/images/photo.jpg" alt="建鴻的頭像" /></div>
-            <div class="title">建鴻 Nick</div>
+          <article class="blocks info">
+            <div class="headshot_wrap">
+              <div class="headshot"><img src="@/assets/images/photo.jpg" alt="建鴻的頭像" /></div>
+            </div>
+
+            <h1 class="title">建鴻 Nick</h1>
             哈囉，我是一名前端工程師，專注於 Vue 生態系的實務開發，主要使用 Vue.js、Nuxt 以及各類 UI Framework，累積多年前端專案經驗，曾參與並完成多種規模與類型的前端系統建置。
 
             <br />
@@ -43,7 +46,26 @@
             <br />
 
             本作品集彙整了我在前端專案中的實務成果與核心技術，透過實際案例呈現我在 介面設計、互動實作與系統整合 上的能力與思維方式。
-          </div>
+          </article>
+
+          <section class="blocks">
+            <h1 class="page_title">
+              <span class="zh">作品集</span>
+              <span class="en">Portfolio</span>
+            </h1>
+
+            <div class="portfolio">
+              <div class="project" v-for="(item, index) in projects" :key="index" @click="openProject(item)">
+                <div class="img">
+                  <img :src="item.image[0]" :alt="item.title" />
+                </div>
+                <h2>
+                  {{ item.title }}
+                  <f7-icon :f7="item.icon"></f7-icon>
+                </h2>
+              </div>
+            </div>
+          </section>
         </f7-block>
       </template>
 
@@ -81,15 +103,120 @@
         </f7-page-content>
       </f7-page>
     </f7-popup>
+
+    <f7-popup class="project_detail" v-model:opened="showProject">
+      <f7-page>
+        <f7-navbar>
+          <f7-nav-left></f7-nav-left>
+          <f7-nav-title>{{ currentProject?.title }}</f7-nav-title>
+          <f7-nav-right>
+            <f7-link @click="showProject = false">
+              <f7-icon f7="xmark" />
+            </f7-link>
+          </f7-nav-right>
+        </f7-navbar>
+
+        <f7-page-content>
+          <f7-block>
+            <Swiper class="project_images" :modules="[Pagination, Navigation]" :pagination="{ clickable: true }" :navigation="true" :auto-height="true" :space-between="12">
+              <SwiperSlide v-for="(img, i) in currentProject?.image" :key="i">
+                <img :src="img" />
+              </SwiperSlide>
+            </Swiper>
+
+            <p class="project_intro">
+              {{ currentProject?.introduction }}
+            </p>
+
+            <div class="tech_block">
+              <h3>技術棧</h3>
+              <div class="tech_group">
+                <strong>前端技術</strong>
+                <span class="tech">
+                  {{ currentProject?.technologyStack.frontend.join('、') }}
+                </span>
+              </div>
+              <div class="tech_group">
+                <strong>後端介接</strong>
+                <span class="tech">
+                  {{ currentProject?.technologyStack.backend.join('、') }}
+                </span>
+              </div>
+              <div class="tech_group">
+                <strong>開發工具</strong>
+                <span class="tech">
+                  {{ currentProject?.technologyStack.tools.join('、') }}
+                </span>
+              </div>
+            </div>
+
+            <div class="btns">
+              <f7-button fill external :href="currentProject?.link" target="_blank">
+                前往網站
+                <f7-icon f7="arrow_right" />
+              </f7-button>
+            </div>
+          </f7-block>
+        </f7-page-content>
+      </f7-page>
+    </f7-popup>
   </f7-page>
 </template>
 
 <script setup>
+  import { Swiper, SwiperSlide } from 'swiper/vue'
+  import { Pagination, Navigation } from 'swiper/modules'
+
+  import 'swiper/css'
+  import 'swiper/css/pagination'
+  import 'swiper/css/navigation'
+
   const { showAlert } = useDialog()
 
   const showDisclaimer = ref(false)
+  // prettier-ignore
+  const projects = [
+    {
+      title: '晨光推廣平台',
+      image: [
+        new URL('@/assets/images/case1/1.png', import.meta.url).href,
+        new URL('@/assets/images/case1/2.png', import.meta.url).href,
+        new URL('@/assets/images/case1/3.png', import.meta.url).href,
+        new URL('@/assets/images/case1/4.png', import.meta.url).href
+      ],
+      icon: 'device_desktop',
+      introduction: '企業推廣平台，包含產品展示、活動報名與會員管理等功能，提升品牌曝光與客戶互動。',
+      link: 'https://sunshineprom-dev.muki001.com/',
+      technologyStack: {
+        frontend: [
+          'Nuxt 3',
+          'Vue 3',
+          'Vuetify',
+          'JavaScript',
+          'HTML5',
+          'SCSS',
+          'RWD'
+        ],
+        backend: [
+          'RESTful API',
+        ],
+        tools: [
+          'node.js',
+          'Vite',
+          'Docker',
+          'Git',
+        ],
+      }
+    }
+  ]
 
-  async function initPage() {
-    // showAlert('頁面初始化', '這是首頁的 initPage')
+  const showProject = ref(false)
+  const currentProject = ref(null)
+
+  function openProject(item) {
+    currentProject.value = item
+    showProject.value = true
   }
+
+  async function initPage() {}
 </script>

@@ -13,7 +13,7 @@
 
   const pageStore = usePageStore()
   const f7params = {
-    name: 'Framework7 App',
+    name: '建鴻 Nick｜前端工程師作品集',
     theme: 'ios',
     darkMode: true,
     routes
