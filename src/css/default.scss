@@ -76,7 +76,6 @@ ul[role="list"] {
 }
 
 .page {
-
   background: var(--color-bg-main);
 
   .page_block {
@@ -198,7 +197,7 @@ ul[role="list"] {
   }
 
   a {
-    color: var(--color-link);
+    color: var(--color-red);
   }
 }
 
@@ -224,16 +223,20 @@ ul[role="list"] {
 }
 
 .portfolio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @include mediaMax(768) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mediaMax(576) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
   .project {
-    width: calc(100% / 3 - 10px);
-
-    @include mediaMax(768) {
-      width: calc(100% / 2 - 10px);
-    }
-
-    @include mediaMax(576) {
-      width: 100%;
-    }
 
     .img {
       aspect-ratio: 16 / 10;
@@ -253,6 +256,13 @@ ul[role="list"] {
           opacity: 0.7;
         }
       }
+
+      &.mobile_style {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
 
     h2 {
@@ -263,14 +273,18 @@ ul[role="list"] {
       position: relative;
       padding-right: 32px;
       color: #fff;
-      font-size: 22px;
-      @include text-lines-ellipsis(1.5rem, 2);
+      font-size: 20px;
+      line-height: 1.6rem;
       font-weight: bold;
+
+      @include mediaMax(1200) {
+        @include text-lines-ellipsis(1.6rem, 2);
+      }
 
       .icon {
         position: absolute;
         right: 0;
-        top: 2px;
+        top: 3px;
         font-size: 20px;
       }
     }
@@ -356,11 +370,36 @@ ul[role="list"] {
 
   .swiper {
     .swiper-wrapper {
+      height: auto;
+
       .swiper-slide {
         text-align: center;
+        position: relative;
+        text-align: center;
+        position: relative;
+        height: 400px;
 
         img {
-          display: inline-block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &.mobile_style {
+          img {
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+
+        @include mediaMax(1200) {
+          height: 300px;
+        }
+
+        @include mediaMax(630) {
+          height: 240px;
         }
       }
     }
@@ -403,4 +442,12 @@ ul[role="list"] {
       background: #4f6591;
     }
   }
+}
+
+.warning {
+  margin-top: 40px;
+  padding: 15px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
