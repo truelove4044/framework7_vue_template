@@ -214,12 +214,12 @@
 
             <div v-else-if="isLinkObject" class="btns style1">
               <f7-button v-if="currentProject.link.ios" fill external :href="currentProject.link.ios" target="_blank" class="ios_btn">
-                iOS 下載
+                iOS
                 <f7-icon f7="arrow_right" />
               </f7-button>
 
               <f7-button v-if="currentProject.link.android" fill external :href="currentProject.link.android" target="_blank" class="android_btn">
-                Android 下載
+                Android
                 <f7-icon f7="arrow_right" />
               </f7-button>
             </div>
