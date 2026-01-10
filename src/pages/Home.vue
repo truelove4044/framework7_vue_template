@@ -1009,6 +1009,69 @@
       }
     },
     {
+      title: '建築專科',
+      image: [
+        'case24/1.jpg',
+        'case24/2.jpg',
+        'case24/3.jpg',
+        'case24/4.jpg',
+        'case24/5.jpg',
+        'case24/6.jpg',
+        'case24/7.jpg',
+        'case24/8.jpg',
+      ],
+      icon: 'device_desktop',
+      introduction: [
+        '主導開發建築產業專屬的人力銀行，並整合「一鍵自動化建站」功能，協助公司快速生成專屬展示頁面',
+        '設計高度抽象化的前端模板引擎，實現資料與 UI 的解耦，讓使用者透過單一操作即可動態渲染出完整的專屬網站',
+        '運用 Ajax 異步處理，打造無刷新的數據互動環境，優化高頻率職缺管理與媒合體驗',
+        '實作複雜的多條件篩選算法（關鍵字、地區、培訓單位），確保在海量建築職缺下仍保有極高的前端檢索效能',
+        '開發高度組件化的人才履歷系統，支援結構化數據錄入與驗證，並提供企業端直觀的審閱與邀約介面',
+        '設計完整的前端表單驗證機制，涵蓋必填檢查、格式驗證與錯誤提示，降低資料填寫錯誤並提升送出成功率',
+        '優化跨裝置 RWD 響應式佈局，確保在各種網絡環境下的加載速度',
+        '整合環境變數管理 API 介面串接，並針對建築業主操作習慣優化 UX 細節，有效提升系統的穩定性與轉換率'
+      ],
+      link: 'https://wotel.com.tw/',
+      offline: false,
+      technologyStack: {
+        frontend: [
+          'Jquery',
+          'HTML5',
+          'SCSS',
+          'RWD',
+        ],
+        backend: [
+          'Ajax',
+        ],
+        tools: [
+          'Laragon'
+        ],
+      }
+    },
+    {
+      title: '天地人',
+      image: [
+        'case25/1.jpg',
+        'case25/2.jpg',
+        'case25/3.jpg',
+        'case25/4.jpg',
+      ],
+      icon: 'device_desktop',
+      introduction: '本專案為切版作品。',
+      link: 'https://www.lmdtwine.com/',
+      offline: false,
+      technologyStack: {
+        frontend: [
+          'Jquery',
+          'HTML5',
+          'SCSS',
+          'RWD',
+        ],
+        backend: [],
+        tools: [],
+      }
+    },
+    {
       title: '糖村',
       image: [
         'case23/1.jpg',
