@@ -4,6 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import viteImagemin from 'vite-plugin-imagemin'
 
 const SRC_DIR = path.resolve(__dirname, './src')
 const PUBLIC_DIR = path.resolve(__dirname, './public')
@@ -52,6 +53,13 @@ export default async () => {
       createSvgIconsPlugin({
         iconDirs: [path.resolve(SRC_DIR, 'assets/icons')],
         symbolId: 'icon-[dir]-[name]'
+      }),
+      viteImagemin({
+        webp: {
+          quality: 75
+        },
+        // 同時保留原圖（避免破壞現有引用）
+        disable: false
       })
     ],
     root: SRC_DIR,

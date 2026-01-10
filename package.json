@@ -37,6 +37,7 @@
     "@vue/compiler-sfc": "^3.5.22",
     "cpy-cli": "^6.0.0",
     "cross-env": "^10.1.0",
+    "imagemin-webp": "^8.0.0",
     "postcss-preset-env": "^10.4.0",
     "postcss-pxtorem": "^6.1.0",
     "sass": "^1.93.2",
@@ -44,6 +45,7 @@
     "unplugin-auto-import": "^20.2.0",
     "unplugin-vue-components": "^30.0.0",
     "vite": "^7.1.12",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }

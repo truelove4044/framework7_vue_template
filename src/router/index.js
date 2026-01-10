@@ -1,11 +1,10 @@
-
-import HomePage from '../pages/home.vue';
+import HomePage from '@/pages/Home.vue'
 
 var routes = [
   {
     path: '/',
-    component: HomePage,
-  },
-];
+    component: HomePage
+  }
+]
 
-export default routes;
+export default routes
